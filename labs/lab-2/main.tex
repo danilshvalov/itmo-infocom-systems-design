@@ -1,0 +1,181 @@
+\documentclass[a4paper, 14pt]{extarticle}
+\usepackage[russian]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{fontspec}
+\usepackage{indentfirst}
+\usepackage{enumitem}
+\usepackage{graphicx}
+\usepackage{scrextend}
+\usepackage{longtable}
+\usepackage[
+  left=20mm,
+  right=10mm,
+  top=20mm,
+  bottom=20mm
+]{geometry}
+\usepackage{parskip}
+\usepackage{titlesec}
+\usepackage{xurl}
+\usepackage{hyperref}
+\usepackage{float}
+\usepackage[
+  figurename=Рисунок,
+  labelsep=endash,
+]{caption}
+\usepackage[outputdir=build, newfloat]{minted}
+\usepackage{multirow}
+\usepackage{array}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=black,
+  filecolor=blue,
+  urlcolor=blue,
+}
+
+\renewcommand*{\labelitemi}{---}
+\setmainfont{Times New Roman}
+\setmonofont{JetBrains Mono}[
+  SizeFeatures={Size=11},
+]
+
+\newenvironment{code}{\captionsetup{type=listing}}{}
+\SetupFloatingEnvironment{listing}{name=Листинг}
+
+\setminted{
+  fontsize=\footnotesize,
+  framesep=0mm,
+}
+
+\captionsetup{width=\textwidth,justification=centering}
+\captionsetup[table]{singlelinecheck=off,justification=justified}
+
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+
+\setlength{\parskip}{6pt}
+
+\setlength{\parindent}{1cm}
+\setlist[itemize]{itemsep=0em,topsep=0em,parsep=0em,partopsep=0em,leftmargin=2.0cm}
+\setlist[enumerate]{itemsep=0em,topsep=0em,parsep=0em,partopsep=0em,leftmargin=2.0cm}
+
+\renewcommand{\thesection}{\arabic{section}.}
+\renewcommand{\thesubsection}{\thesection\arabic{subsection}.}
+\renewcommand{\thesubsubsection}{\thesubsection\arabic{subsubsection}.}
+
+\titleformat{\section}{\normalfont\bfseries}{\thesection}{0.5em}{}
+\titleformat{\subsection}{\normalfont\bfseries}{\thesubsection}{0.5em}{}
+
+\titleformat*{\section}{\normalfont\bfseries}
+\titleformat*{\subsection}{\normalfont\bfseries}
+
+\linespread{1.5}
+\renewcommand{\baselinestretch}{1.5}
+
+\renewcommand{\theenumii}{(\asbuk{enumii})}
+\renewcommand{\labelenumii}{\asbuk{enumii})}
+\AddEnumerateCounter{\asbuk}{\@asbuk}{\cyrm}
+
+\begin{document}
+
+\begin{titlepage}
+  \vspace{0pt plus2fill}
+  \noindent
+
+  \vspace{0pt plus6fill}
+  \begin{center}
+    Санкт-Петербургский национальный исследовательский университет
+    информационных технологий, механики и оптики
+
+    \vspace{0pt plus2fill}
+
+    Практическая работа по теме:
+
+    <<Единая государственная система абитуриента>>
+
+    \vspace{0pt plus1fill}
+
+    Задание №2
+
+    <<Создание прецедентов на уровне элементарных бизнес-процессов (EBP)>>
+
+  \end{center}
+
+  \vspace{0pt plus7fill}
+  \begin{flushright}
+    Выполнил: \\
+    Швалов Даниил Андреевич
+
+    Группа: К33211
+
+    Проверил: \\
+    Осипов Никита Алексеевич
+  \end{flushright}
+
+  \vspace{0pt plus2fill}
+  \begin{center}
+    Санкт-Петербург
+
+    2023
+  \end{center}
+\end{titlepage}
+
+\setcounter{page}{2}
+
+\section{Введение}
+
+\textbf{Цель}: исследовать задачи пользователей и сформулировать основные и
+вспомогательные прецеденты на уровне элементарных бизнес-процессов (EBP).
+
+\section{Ход работы}
+
+В ходе исследования задач пользователей были сформулированы следующие прецеденты.
+
+Как абитуриент:
+\begin{itemize}
+  \item я хочу видеть требования, которые выставляет ВУЗ, для поступления, чтобы
+  понимать, что я и мои знания соответствуют требованиям ВУЗа;
+  \item я хочу знать, какие индивидуальные достижения учитываются при
+  поступлении в данный ВУЗ, чтобы понимать, сколько итоговых баллов у меня будет
+  при поступлении;
+  \item я хочу знать, какое количество мест предоставляет ВУЗ для данного
+  направления, чтобы понимать, смогу ли я попасть на это направление;
+  \item я хочу видеть интерактивный список студентов, которые подали документы
+  на это направление в данный ВУЗ, чтобы понимать, хватит ли мне баллов для
+  прохождения на данное направление;
+  \item я хочу видеть олимпиады, которые принимает ВУЗ, чтобы понимать, могу ли
+  я поступить без вступительных испытаний;
+  \item я хочу знать, требуется ли сдавать дополнительные вступительные
+  испытания, чтобы понимать, нужно ли готовиться к дополнительным экзаменам
+  перед поступлением;
+  \item я хочу видеть, предоставляемые ВУЗом условия, такие как общежитие,
+  военная кафедра и т. п., чтобы понимать, что ВУЗ удовлетворяет моим
+  пожеланиям;
+  \item я хочу видеть отзывы от реальных студентов о процессах обучения в данном
+  ВУЗе, чтобы иметь понимание о реальном качестве обучения в этом ВУЗе;
+  \item я хочу иметь возможность удаленно подавать заявление на зачисление в
+  данный ВУЗ, чтобы не ехать в ВУЗ лично, а делать все через Интернет.
+\end{itemize}
+
+Как руководство учебного заведения:
+\begin{itemize}
+  \item я хочу видеть количество студентов, которое собирается поступить на
+  данное направление, чтобы понимать примерное количество будущих студентов;
+  \item я хочу предоставлять наиболее актуальную информацию для каждого
+  направления и о ВУЗе в целом, чтобы абитуриенты имели более правдоподобную
+  картину о ВУЗе;
+  \item я хочу иметь возможность принимать заявления на поступление от
+  абитуриентов в удаленном формате, чтобы упростить процесс приемной кампании;
+  \item я хочу иметь возможность получать отчетность по приемным кампаниям,
+  чтобы упростить процесс обработки и составления документов и отчетов по
+  приемным кампаниям.
+\end{itemize}
+
+\section{Заключение}
+
+В ходе выполнения данного практического задания я исследовал задачи
+пользователей и сформулировал основные и вспомогательные прецеденты на уровне
+элементарных бизнес-процессов (EBP).
+
+\end{document}
