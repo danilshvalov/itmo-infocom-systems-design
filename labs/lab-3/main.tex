@@ -1,0 +1,249 @@
+\documentclass[a4paper, 14pt]{extarticle}
+\usepackage[russian]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{fontspec}
+\usepackage{indentfirst}
+\usepackage{enumitem}
+\usepackage{graphicx}
+\usepackage{scrextend}
+\usepackage{longtable}
+\usepackage[
+  left=20mm,
+  right=10mm,
+  top=20mm,
+  bottom=20mm
+]{geometry}
+\usepackage{parskip}
+\usepackage{titlesec}
+\usepackage{xurl}
+\usepackage{hyperref}
+\usepackage{float}
+\usepackage[
+  figurename=Рисунок,
+  labelsep=endash,
+]{caption}
+\usepackage[outputdir=build, newfloat]{minted}
+\usepackage{multirow}
+\usepackage{array}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=black,
+  filecolor=blue,
+  urlcolor=blue,
+}
+
+\renewcommand*{\labelitemi}{---}
+\setmainfont{Times New Roman}
+\setmonofont{JetBrains Mono}[
+  SizeFeatures={Size=11},
+]
+
+\newenvironment{code}{\captionsetup{type=listing}}{}
+\SetupFloatingEnvironment{listing}{name=Листинг}
+
+\setminted{
+  fontsize=\footnotesize,
+  framesep=0mm,
+}
+
+\captionsetup{width=\textwidth,justification=centering}
+\captionsetup[table]{singlelinecheck=off,justification=justified}
+
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+
+\setlength{\parskip}{6pt}
+
+\setlength{\parindent}{1cm}
+\setlist[itemize]{itemsep=0em,topsep=0em,parsep=0em,partopsep=0em,leftmargin=2.0cm}
+\setlist[enumerate]{itemsep=0em,topsep=0em,parsep=0em,partopsep=0em,leftmargin=2.0cm}
+
+\renewcommand{\thesection}{\arabic{section}.}
+\renewcommand{\thesubsection}{\thesection\arabic{subsection}.}
+\renewcommand{\thesubsubsection}{\thesubsection\arabic{subsubsection}.}
+
+\titleformat{\section}{\normalfont\bfseries}{\thesection}{0.5em}{}
+\titleformat{\subsection}{\normalfont\bfseries}{\thesubsection}{0.5em}{}
+
+\titleformat*{\section}{\normalfont\bfseries}
+\titleformat*{\subsection}{\normalfont\bfseries}
+
+\linespread{1.5}
+\renewcommand{\baselinestretch}{1.5}
+
+\renewcommand{\theenumii}{(\asbuk{enumii})}
+\renewcommand{\labelenumii}{\asbuk{enumii})}
+\AddEnumerateCounter{\asbuk}{\@asbuk}{\cyrm}
+
+\begin{document}
+
+\begin{titlepage}
+  \vspace{0pt plus2fill}
+  \noindent
+
+  \vspace{0pt plus6fill}
+  \begin{center}
+    Санкт-Петербургский национальный исследовательский университет
+    информационных технологий, механики и оптики
+
+    \vspace{0pt plus2fill}
+
+    Практическая работа по теме:
+
+    <<Единая государственная система абитуриента>>
+
+    \vspace{0pt plus1fill}
+
+    Задание №3
+
+    <<Построение и исследование моделей сценария использования (Use Case)>>
+
+  \end{center}
+
+  \vspace{0pt plus7fill}
+  \begin{flushright}
+    Выполнил: \\
+    Швалов Даниил Андреевич
+
+    Группа: К33211
+
+    Проверил: \\
+    Осипов Никита Алексеевич
+  \end{flushright}
+
+  \vspace{0pt plus2fill}
+  \begin{center}
+    Санкт-Петербург
+
+    2023
+  \end{center}
+\end{titlepage}
+
+\setcounter{page}{2}
+
+\section{Введение}
+
+\textbf{Цель}: для выбранного варианта инфокоммуникационной системы реализовать
+развернутое описание основного прецедента, на основании которых будет
+организована реализация проекта. Разработать развернутое описание основного
+прецедента.
+
+\section{Ход работы}
+
+Для единой государственной системы абитуриента было создано следующее
+развернутое описание основного прецедента.
+
+\subsubsection*{Прецедент. Подача документов на поступление в ВУЗ}
+
+{
+  \setlength{\parindent}{0pt}
+
+  \textbf{Основной исполнитель}. Абитуриент.
+
+  \textbf{Заинтересованные лица и их требования}
+  \begin{itemize}
+    \item Абитуриент. Хочет быстро и просто внести в систему свои документы,
+    выбрать ВУЗ по его знаниям и интересам, подать заявление и увидеть свои
+    шансы на поступления.
+    \item Руководство учебного заведения. Хочет видеть список всех поступающих
+    абитуриентов, иметь систему, автоматизирующую задачи приемной кампании.
+  \end{itemize}
+
+  \textbf{Предусловия}. Абитуриент идентифицирован и аутентифицирован в системе.
+
+  \textbf{Результаты (постусловия)}. Данные о подаче заявления сохранены.
+  Документы, предоставленные абитуриентом, также сохранены, защищены и
+  направлены в ВУЗ, в который абитуриент подал документы. Информация о
+  количестве поданных заявлений на данное направление в данном ВУЗе обновлена.
+  Рейтинг абитуриентов пересчитан.
+
+  \textbf{Основной успешный сценарий (или основной процесс)}:
+  \begin{enumerate}
+    \item абитуриент заходит на сайт и авторизуется в системе;
+    \item абитуриент загружает все необходимые документы о себе: аттестат,
+    информация личных достижений и т. п.;
+    \item система сохраняет информацию о абитуриенте;
+    \item абитуриент переходит на страницу со списком ВУЗов, фильтрует
+    ВУЗы по интересам, направлениям, потребностям, знаниям и отзывам студентов;
+    \item абитуриент выбирает один или несколько ВУЗов (до 3 шт.), а также
+    направления (также до 3 шт.), куда он хотел бы поступить;
+    \item абитуриент подписывает заявление на поступление в данные ВУЗы;
+    \item система обрабатывает заявления от абитуриента, отправляет информацию
+    руководствам учебных заведений;
+    \item руководства учебных заведений подтверждают прием документов и
+    заявления от абитуриента;
+    \item система добавляет абитуриента в очередь на поступление в ВУЗ.
+  \end{enumerate}
+
+  \textbf{Расширения (или альтернативные потоки)}:
+  \begin{enumerate}
+    \item[2а.] При неправильной загрузке документов абитуриента (неправильно сделана
+      фотография, не загружены подтверждения личных достижений и т. п.) или при
+      дополнительных требованиях ВУЗа.
+      \begin{enumerate}
+        \item абитуриент догружает все недостающие или неправильно сделанные
+        документы и информацию о себе;
+        \item руководство учебного заведения перепроверяет новую загруженную
+        информацию.
+      \end{enumerate}
+    \item[3а.] Ошибка при сохранении информации об абитуриенте.
+      \begin{enumerate}
+        \item система уведомляет об ошибке пользователя и переходит в предыдущее
+        состояние;
+        \item пользователь пытается снова загрузить документы.
+      \end{enumerate}
+    \item[6-8а.] Абитуриент хочет отозвать заявление из ВУЗа.
+      \begin{enumerate}
+        \item абитуриент выбирает заявление, которое нужно отменить;
+        \item система получает информацию об отмене заявления, направляет
+        уведомление руководству учебного заведения;
+        \item руководство учебного заведения фиксирует отмену заявления;
+        \item система обновляет список абитуриентов, подавших заявление в ВУЗ.
+      \end{enumerate}
+  \end{enumerate}
+
+  \textbf{Специальные требования}:
+  \begin{itemize}
+    \item все документы и информация о абитуриентах должны быть защищены и
+    храниться в зашифрованном виде;
+    \item система должна выдерживать высокие нагрузки: использование системы
+    большим количеством пользователей единовременно не должно препятствовать
+    работе системы;
+    \item при сбое системы никакие данные не должны быть повреждены, все
+    операции, выполняемые во время сбоя, должны быть отменены без повреждения
+    данных.
+  \end{itemize}
+
+  \textbf{Список технологий и типов данных}:
+  \begin{itemize}
+    \item доступ систему должен быть возможен со всех основных типов устройств и
+    операционных систем (iOS, Android, Windows, Linux, macOS);
+    \item база данных, используемая для хранения данных об абитуриентах, должна
+    соответствовать требованиям ACID, а также обладать механизмом транзакций.
+  \end{itemize}
+
+  \textbf{Частота использования}:
+  \begin{itemize}
+    \item для абитуриентов: от 1 до 5 раз за все время;
+    \item для руководств учебных заведений: ежегодно во время работы приемной
+    кампании.
+  \end{itemize}
+
+  \textbf{Открытые вопросы}:
+  \begin{itemize}
+    \item изучить нормативные документы по организации процессов приемных
+    кампаний разных ВУЗов;
+    \item исследовать максимально возможную нагрузку в пик подачи заявлений во
+    время приемной кампании;
+    \item выяснить, какое количество данных будет хранить система.
+  \end{itemize}
+}
+
+\section{Заключение}
+
+В ходе выполнения данного практического задания я реализовал развернутое
+описание основного прецедента.
+
+\end{document}
