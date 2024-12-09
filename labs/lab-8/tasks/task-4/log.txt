@@ -1,0 +1,6 @@
+Log entry: Метод main()
+Log entry: Вычитание 35
+Log entry: Сложение 30
+Log entry: Метод main()
+Log entry: Вычитание 35
+Log entry: Сложение 30
